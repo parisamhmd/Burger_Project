@@ -18,14 +18,13 @@ const Orders = React.lazy(() => {
 
 const Auth = React.lazy(() => {
   return import("./containers/Auth/Auth");
-});
+})
 
 const App = (props) => {
   const { OnTryAutoSignUp } = props;
   useEffect(() => {
     OnTryAutoSignUp();
   }, [OnTryAutoSignUp]);
-
   let routes = (
     <Switch>
       <Route path="/auth" render={(props) => <Auth {...props} />} />
