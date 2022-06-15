@@ -6,7 +6,6 @@ export const PurchaseBurgerStart = (orderData) => {
         axios
             .post("/orders.json", orderData)
             .then((response) => {
-                console.log(response.data);
                 dispatch(PurchaseBurgerSuccess(response.data, orderData));
 
             })
@@ -41,11 +40,19 @@ export const PurchaseLoading = () => {
     }
 }
 
-export const FetchOrders = (userID) => {
+export const FetchOrders = () => {
     return (dispatch) => {
-        axios.get("/orders?userID=" + userID)
+        axios.get("/orders.json")
             .then((res) => {
-                dispatch(FetchDataSuccess(res.data))
+                const fetchOrders = [];
+                for (let key in res.data) {
+                    fetchOrders.push({
+                        ...res.data[key],
+                        id: key
+                    })
+                }
+                dispatch(FetchDataSuccess(fetchOrders))
+                this.setState({ loading: false, orders: fetchOrders })
             })
             .catch((e) => {
                 dispatch(FetchDataFail(e))

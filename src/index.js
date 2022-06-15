@@ -7,7 +7,6 @@ import thunk from "redux-thunk";
 import firebase from "firebase/compat/app";
 import "firebase/firestore";
 import "firebase/auth";
-// import firebase from 'firebase'
 
 import "./index.css";
 import App from "./App";
@@ -15,7 +14,6 @@ import * as serviceWorker from "./serviceWorker";
 import BurgerReducer from "./Store/Reducer/BurgerBuilderReducer";
 import OrderReducer from "./Store/Reducer/OrderReducer";
 import AuthReducer from "./Store/Reducer/AuthReducer";
-import { initializeApp } from 'firebase/app';
 
 firebase.initializeApp({
     apiKey: "AIzaSyAu3otO1i6hf376HoaNk7BdF9wKA-fQVoY",
